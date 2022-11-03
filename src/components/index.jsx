@@ -3,3 +3,4 @@ export { default as Anonymization } from "./Anonymization";
 export { default as Example } from "./Example";
 export { default as Preview } from "./Preview";
 export { default as PreviewTable } from "./PreviewTable";
+export { default as MemIdInPutNum } from "./InputNum/MemIdInPutNum";

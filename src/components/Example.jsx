@@ -53,8 +53,8 @@ const Example = () => {
     {
       key: "1",
       algorithm: "마스킹",
-      before: "김개똥",
-      after: "김*똥",
+      before: "홍길동",
+      after: "홍*동",
     },
     {
       key: "2",
@@ -66,7 +66,7 @@ const Example = () => {
       key: "3",
       algorithm: "해쉬",
       before: "234",
-      after: "1123bdvsbsd22132541243215",
+      after: "114BD151F8FB0C58642D2170DA4AE7D7C57977260AC2CC8905306CAB6B2ACABC",
     },
     {
       key: "4",
@@ -90,6 +90,7 @@ const Example = () => {
           onChange={onChange}
           scroll={{ y: 300 }}
           pagination={false}
+          bordered
         />
         <div className="h-24 flex justify-end w-full">
           {/* <button
