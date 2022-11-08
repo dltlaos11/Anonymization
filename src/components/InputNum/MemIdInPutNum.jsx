@@ -41,13 +41,25 @@ const MemIdInPutNum = (props) => {
   // };
 
   let [options, setOptions] = useState();
+  let [subIdx, setSubIdx] = useState();
+
   useEffect(() => {
     let sub = [];
+    let subIndex = [];
     console.log(props.degreeOptions?.typeValue);
     props.setType(props.degreeOptions?.typeValue);
-    props.degreeOptions?.degrees?.forEach((row) => sub.push({ value: row }));
+    props.degreeOptions?.degrees?.forEach((row) => {
+      sub.push({ value: row });
+      subIndex.push(row);
+    });
     console.log(options);
+    console.log(sub.length, "CONFIRM SUB");
+    if (sub.length === 0) {
+      console.log("HI");
+      sub.push({ value: "0" });
+    }
     setOptions(sub);
+    setSubIdx(subIndex);
   }, [props.degreeOptions]);
 
   return (
@@ -56,10 +68,11 @@ const MemIdInPutNum = (props) => {
         onChange={(e) => {
           // console.log(e[e.length - 1]);
           // console.log(props.degreeOptions?.typeValue);
-          props.onChange(Number(e[e.length - 1]));
+          console.log(e, subIdx.indexOf(e) + 1, "degree");
+          props.onChange(subIdx.indexOf(e) + 1);
         }}
-        defaultValue="미적용"
-        style={{ width: 120 }}
+        defaultValue="0"
+        style={{ width: 150 }}
         options={options}
       ></Select>
       {/* {options.map((option, idx) => (

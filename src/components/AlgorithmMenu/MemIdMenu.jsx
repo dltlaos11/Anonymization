@@ -119,7 +119,7 @@ const MemIdMenu = (props) => {
           // });
         }}
         style={{
-          width: 130,
+          width: 240,
         }}
         mode="vertical"
         items={memIdItems}

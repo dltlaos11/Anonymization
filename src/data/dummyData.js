@@ -1,6 +1,7 @@
 export const dummyData = [
   {
     columnName: "memId",
+    tableName: "memIdTable",
     groups: [
       {
         groupName: "암호화",
@@ -19,6 +20,7 @@ export const dummyData = [
   },
   {
     columnName: "email",
+    tableName: "emalTable",
     groups: [
       {
         groupName: "가명화",
@@ -52,6 +54,7 @@ export const dummyData = [
   },
   {
     columnName: "birth",
+    tableName: "birthTable",
     groups: [
       {
         groupName: "가명화",
@@ -122,6 +125,7 @@ export const dummyData = [
   },
   {
     columnName: "height",
+    tableName: "heightTable",
     groups: [
       {
         groupName: "가명화",
@@ -193,6 +197,7 @@ export const dummyData = [
   },
   {
     columnName: "weight",
+    tableName: "weightTable",
     groups: [
       {
         groupName: "가명화",
@@ -264,6 +269,7 @@ export const dummyData = [
   },
   {
     columnName: "spermId",
+    tableName: "spermIdTable",
     groups: [
       {
         groupName: "암호화",
@@ -282,6 +288,7 @@ export const dummyData = [
   },
   {
     columnName: "activity",
+    tableName: "activityTable",
     groups: [
       {
         groupName: "암호화",
@@ -300,6 +307,7 @@ export const dummyData = [
   },
   {
     columnName: "co",
+    tableName: "coTable",
     groups: [
       {
         groupName: "암호화",
@@ -362,6 +370,7 @@ export const dummyData = [
   },
   {
     columnName: "date",
+    tableName: "dateTable",
     groups: [
       {
         groupName: "가명화",
