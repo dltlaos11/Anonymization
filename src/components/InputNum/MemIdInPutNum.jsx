@@ -7,14 +7,11 @@ import React, {
 } from "react";
 import { useStateContext } from "../../contexts/ContextProvider";
 import { Table, Menu, Select, Dropdown, Button, InputNumber } from "antd";
-import { MemIdStateContext } from "../../contexts/MemIdContextProvider";
 
 const MemIdInPutNum = (props) => {
   const { Option } = Select;
 
   let { memId, setMemId } = useStateContext();
-
-  const memIdContext = useContext(MemIdStateContext);
 
   // useEffect(() => {
   //   console.log(props.degreeInfo);

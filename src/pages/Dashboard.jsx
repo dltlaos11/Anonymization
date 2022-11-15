@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Header, Example, Anonymization, Preview } from "../components";
 import { Table, Menu, Space, Dropdown, Button } from "antd";
 import { useStateContext } from "../contexts/ContextProvider";
-import Lottie from "lottie-react";
-import { lottie } from "../assets";
 const Dashboard = (props) => {
   let { story, setStory } = useStateContext();
 
@@ -32,20 +30,9 @@ const Dashboard = (props) => {
             <Example />
           </div>
         </div>
-        {/* <div>
-          <Lottie
-            options={defaultOptions}
-            animationData={lottie}
-            height={200}
-            width={200}
-          />
-        </div> */}
+
         <div className="grid grid-cols-1  gap-4  bg-white rounded-3xl md:m-10">
           <div className="m-2 md:m-10 mt-24  bg-white rounded-3xl ">
-            {/* <div className="absolute inset-y-[910px] right-[120px]">
-              <Button type="primary">Export</Button>
-            </div> */}
-
             <Header title="[알고리즘] 미리보기" />
             <Preview />
           </div>

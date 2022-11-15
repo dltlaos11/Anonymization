@@ -7,45 +7,15 @@ const Example = () => {
     {
       title: "Algorithm",
       dataIndex: "algorithm",
-      //   filters: [
-      //     {
-      //       text: "Joe",
-      //       value: "Joe",
-      //     },
-      //     {
-      //       text: "Category 1",
-      //       value: "Category 1",
-      //     },
-      //     {
-      //       text: "Category 2",
-      //       value: "Category 2",
-      //     },
-      //   ],
-      //   filterMode: "tree",
-      //   filterSearch: true,
-      //   onFilter: (value, record) => record.name.startsWith(value),
       width: "30%",
     },
     {
       title: "Before",
       dataIndex: "before",
-      //   sorter: (a, b) => a.age - b.age,
     },
     {
       title: "After",
       dataIndex: "after",
-      //   filters: [
-      //     {
-      //       text: "London",
-      //       value: "London",
-      //     },
-      //     {
-      //       text: "New York",
-      //       value: "New York",
-      //     },
-      //   ],
-      //   onFilter: (value, record) => record.address.startsWith(value),
-      //   filterSearch: true,
       width: "40%",
     },
   ];
@@ -92,16 +62,7 @@ const Example = () => {
           pagination={false}
           bordered
         />
-        <div className="h-24 flex justify-end w-full">
-          {/* <button
-            onClick={() => {
-              console.log("hi");
-            }}
-            className="bg-red-600 shadow-lg my-auto text-center rounded-2xl text-white p-3 w-32 mr-7"
-          >
-            export
-          </button> */}
-        </div>
+        <div className="h-24 flex justify-end w-full"></div>
       </div>
     </>
   );
