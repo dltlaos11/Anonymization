@@ -7,7 +7,8 @@ import React, {
 } from "react";
 import { Preview } from "../components";
 
-import { dummyData } from "../data/dummyData";
+// import { dummyData } from "../data/dummyData";
+import { newDummyData } from "../data/newDummyData";
 
 export const StateContext = createContext();
 
@@ -80,9 +81,10 @@ export const ContextProvider = ({ children }) => {
     //   },
     // ],
     rows: (() =>
-      dummyData.map((column, idx) => ({
+      newDummyData[0].columns.map((column, idx) => ({
         tableName: `${column.tableName}`,
         field: `${column.columnName}`,
+        dataTypes: `${column.dataType}`,
         algorithm: "미선택",
         type: 0,
         degree: 0,
@@ -141,38 +143,22 @@ export const ContextProvider = ({ children }) => {
   let [dataTran, setDataTran] = useState([]);
 
   useEffect(() => {
-    // let row = dummyData.map((column, idx) => ({
-    //   key: column.columnName,
-    //   filed: column.columnName,
-    //   algorithm: column.groups, // MemIdMenu에서 !
-    // }));
-    // setRowData(row);
+    // let rows = [];
+    // rows.push({
+    //   rows: dummyData.map((column, idx) => ({
+    //     tableName: column.tableName,
+    //     filed: column.columnName,
+    //     algorithm: "미선택",
+    //     type: 0,
+    //     degree: 0,
+    //   })),
+    // });
 
-    let rows = [];
-    rows.push({
-      rows: dummyData.map((column, idx) => ({
-        tableName: column.tableName,
-        filed: column.columnName,
-        algorithm: "미선택",
-        type: 0,
-        degree: 0,
-      })),
-    });
-    // setInitialState(rows[0]);
-    // setInitialState(rows[0]);
-
-    // let row = dummyData.map((column, idx) => ({
-    //   tableName: column.tableName,
-    //   filed: column.columnName,
-    //   algorithm: "미선택",
-    //   type: 0,
-    //   degree: 0,
-    // }))
-    console.log(initialState, rows[0], "CONFIRN");
-    setDataTran(dummyData);
-    // console.log(rowData);
+    console.log(newDummyData);
+    console.log(newDummyData[0].columns);
+    console.log(initialState, "CONFIRN");
+    setDataTran(newDummyData);
   }, [save]);
-  // console.log(dataTran);
 
   let [memIdData, setMemIdData] = useState("미선택"); // InputNum 공간
   let [emailData, setEmailData] = useState("미선택");

@@ -90,21 +90,27 @@ const Anonymization = (props) => {
   let data = [];
 
   useEffect(() => {
-    const getDegree = ({ field, algorithm, type }) => {
+    const getDegree = ({ field, algorithm, dataTypes, type }) => {
       // console.log(field, algorithm, type);
       let degree = [];
-      const fieldObject = dataTran.find(
-        ({ columnName }) => columnName === field
-      );
+      const fieldObject = dataTran[0]?.algorithms?.find(
+        ({ dataType }) => dataType === Number(dataTypes)
+      ); //
+
       const algorithms = fieldObject?.groups.map(
         ({ algorithms }) => algorithms
       );
 
+      // console.log(algorithms, "ALGORITHMS ");
       const algorithmObject = algorithms?.map(([{ types }]) =>
-        types?.map((row) => degree.push(row))
+        types?.map((row) => {
+          //
+          degree.push(row);
+          // console.log(row, "ROW");
+        })
       );
 
-      const a = degree.find(({ typeName }) => typeName === algorithm);
+      const a = degree.find(({ type }) => type === algorithm);
 
       return a;
     };
@@ -113,21 +119,30 @@ const Anonymization = (props) => {
       const res = [];
       for (let i = 0; i < val.length; i++) {
         for (let j = 0; j < val[i].algorithms.length; j++) {
+          // console.log(val[i]?.algorithms[j]?.types);
           res.push(val[i]?.algorithms[j]?.types);
         }
       }
       return res;
     };
 
-    const rowInfo = dataTran.map((column, idx) => ({
+    const findAlgorithm = (columnDataType) => {
+      const algorithmObject = dataTran[0].algorithms.find(
+        ({ dataType }) => dataType === columnDataType
+      );
+      // console.log(algorithmObject.groups);
+      return algorithmObject.groups;
+    };
+
+    const rowInfo = dataTran[0]?.columns?.map((column, idx) => ({
       key: column.columnName,
       table: column.tableName,
       field: column.columnName,
-      algorithm: column.groups, // MemIdMenu에서 !
-      degree: partDegree(column.groups),
+      algorithm: findAlgorithm(column.dataType), // MemIdMenu에서 !
+      degree: partDegree(findAlgorithm(column.dataType)),
     }));
 
-    let tableData = rowInfo.map((row, idx) => ({
+    let tableData = rowInfo?.map((row, idx) => ({
       key: row.key,
       table: row.table,
       field: row.field,
@@ -172,7 +187,8 @@ const Anonymization = (props) => {
         />
       ),
     }));
-    console.log(context?.state);
+    // console.log(context?.state);
+    console.log(rowInfo, "ROWINFO");
     setDatasource(tableData);
   }, [context.actions]);
 

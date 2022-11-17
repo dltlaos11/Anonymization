@@ -44,7 +44,7 @@ const MemIdMenu = (props) => {
     const Subs = [];
 
     for (let i = 0; i < data?.length; i++) {
-      Subs.push(getItem(data[i]?.typeName, data[i]?.typeName));
+      Subs.push(getItem(data[i]?.type, data[i]?.type));
     }
     return Subs;
   };

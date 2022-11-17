@@ -43,16 +43,16 @@ const MemIdInPutNum = (props) => {
   useEffect(() => {
     let sub = [];
     let subIndex = [];
-    console.log(props.degreeOptions?.typeValue);
+    // console.log(props.degreeOptions?.typeValue);
     props.setType(props.degreeOptions?.typeValue);
     props.degreeOptions?.degrees?.forEach((row) => {
       sub.push({ value: row });
       subIndex.push(row);
     });
-    console.log(options);
-    console.log(sub.length, "CONFIRM SUB");
+    // console.log(options);
+    // console.log(sub.length, "CONFIRM SUB");
     if (sub.length === 0) {
-      console.log("HI");
+      // console.log("HI");
       sub.push({ value: "0" });
     }
     setOptions(sub);
