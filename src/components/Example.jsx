@@ -7,16 +7,17 @@ const Example = () => {
     {
       title: "Algorithm",
       dataIndex: "algorithm",
-      width: "30%",
+      width: "10%",
     },
     {
       title: "Before",
       dataIndex: "before",
+      width: "10%",
     },
     {
       title: "After",
       dataIndex: "after",
-      width: "40%",
+      width: "30%",
     },
   ];
   const data = [
@@ -52,17 +53,16 @@ const Example = () => {
 
   return (
     <>
-      <div className="m-2 md:m-10 h-[700px] mt-24 p-2 md:p-10 bg-white rounded-3xl ">
+      <div className="m-2 p-5 md:m-10 bg-white w-[1000px]">
         <Header title="예시" />
         <Table
           columns={columns}
           dataSource={data}
           onChange={onChange}
-          scroll={{ y: 300 }}
+          scroll={{ x: true, y: 300 }}
           pagination={false}
           bordered
         />
-        <div className="h-24 flex justify-end w-full"></div>
       </div>
     </>
   );

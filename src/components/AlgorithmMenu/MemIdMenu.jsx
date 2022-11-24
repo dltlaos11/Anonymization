@@ -1,14 +1,11 @@
-import { Table, Menu, Select, Dropdown, Button, InputNumber } from "antd";
-import { useStateContext } from "../../contexts/ContextProvider";
-
-import React, { useContext, useEffect, useState } from "react";
-import { dummyData } from "../../data/dummyData";
+/* Ant Design */
+import { Menu } from "antd";
+/* React Library */
+import React, { useState } from "react";
 
 const MemIdMenu = (props) => {
   const { onChange } = props;
   let [memIdData, setMemIdData] = useState("미선택");
-
-  let { rowData, setRowData } = useStateContext();
 
   const getItem = (label, key, icon, children, type) => {
     return { key, icon, children, label, type };
@@ -76,7 +73,7 @@ const MemIdMenu = (props) => {
   ];
 
   return (
-    <div>
+    <div className="mb-7">
       <Menu
         onClick={(e) => {
           props.onChange(e.key);
@@ -84,7 +81,8 @@ const MemIdMenu = (props) => {
           handleOnChange(props.index, e.key);
         }}
         style={{
-          width: 240,
+          width: 150,
+          height: 5,
         }}
         mode="vertical"
         items={memIdItems}

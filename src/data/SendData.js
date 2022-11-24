@@ -1,58 +1,53 @@
 export const dummy = [
-  {
-    // key: 0,
-    memId: "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
-    email: "v******@email.coom",
-    birth: "f+oa6TohmrCycZe3NFRPZQ==",
-    height: "190",
-    weight: "103",
-  },
-  {
-    // key: 1,
-    memId: "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
-    email: "a********@naver.com",
-    birth: "S3IvbVgjs7k6LoFPKfbjNQ==",
-    height: "180",
-    weight: "69",
-  },
-  {
-    // key: 2,
-    memId: "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
-    email: "a********@naver.com",
-    birth: "S3IvbVgjs7k6LoFPKfbjNQ==",
-    height: "180",
-    weight: "69",
-  },
-  {
-    // key: 3,
-    memId: "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
-    email: "v******@email.coom",
-    birth: "f+oa6TohmrCycZe3NFRPZQ==",
-    height: "190",
-    weight: "103",
-  },
-  {
-    // key: 4,
-    memId: "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
-    email: "a********@naver.com",
-    birth: "S3IvbVgjs7k6LoFPKfbjNQ==",
-    height: "180",
-    weight: "69",
-  },
-  {
-    // key: 5,
-    memId: "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
-    email: "v******@email.coom",
-    birth: "f+oa6TohmrCycZe3NFRPZQ==",
-    height: "190",
-    weight: "103",
-  },
-  {
-    // key: 6,
-    memId: "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
-    email: "a********@gmail.com",
-    birth: "Fer39It/YVv5azSokXZDxQ==",
-    height: "180",
-    weight: "77",
-  },
+  [
+    {
+      tableName: "tb_mber_detail",
+      columnName: "mem_sn",
+      data: "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+    },
+    {
+      tableName: "tb_mber_manage",
+      columnName: "email_agree_ty1",
+      data: "v******@email.coom",
+    },
+    {
+      tableName: "tb_mber_manage",
+      columnName: "yummy",
+      data: "BBB******@email.coom",
+    },
+  ], // ù������
+  [
+    {
+      tableName: "tb_mber_detail",
+      columnName: "mem_sn",
+      data: "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+    },
+    {
+      tableName: "tb_mber_manage",
+      columnName: "email_agree_ty1",
+      data: "a********@naver.com",
+    },
+    {
+      tableName: "tb_mber_manage",
+      columnName: "yummy",
+      data: "u******@email.coom",
+    },
+  ], // �ι�����
+  [
+    {
+      tableName: "tb_mber_detail",
+      columnName: "mem_sn",
+      data: "111118562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+    },
+    {
+      tableName: "tb_mber_manage",
+      columnName: "email_agree_ty1",
+      data: "b********@naver.com",
+    },
+    {
+      tableName: "tb_mber_manage",
+      columnName: "yummy",
+      data: "n******@email.coom",
+    },
+  ],
 ];

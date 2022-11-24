@@ -1,3 +1,4 @@
+/* React Library */
 import React, {
   createContext,
   useContext,
@@ -5,11 +6,11 @@ import React, {
   useReducer,
   useEffect,
 } from "react";
-import { Preview } from "../components";
 
 // import { dummyData } from "../data/dummyData";
 import { newDummyData } from "../data/newDummyData";
 
+/* Context 생성 */
 export const StateContext = createContext();
 
 export const ContextProvider = ({ children }) => {
@@ -84,19 +85,14 @@ export const ContextProvider = ({ children }) => {
       newDummyData[0].columns.map((column, idx) => ({
         tableName: `${column.tableName}`,
         field: `${column.columnName}`,
-        dataTypes: `${column.dataType}`,
+        dataTypes: Number(`${column.dataType}`),
         algorithm: "미선택",
         type: 0,
         degree: 0,
       })))(),
   };
 
-  // let [initialState, setInitialState] = useState({});
-
-  const [IS, setIS] = useState({});
-
-  // let [initialState, setInitialState] = useState();
-
+  /* useReducer에서 발생되는 이벤트들 */
   const SET_ALGORITHM_SOURCE = "SET_ALGORITHM_SOURCE";
   const SET_DEGREE_SOURCE = "SET_DEGREE_SOURCE";
   const SET_TYPE_SOURCE = "SET_TYPE_SOURCE";
@@ -128,45 +124,14 @@ export const ContextProvider = ({ children }) => {
         return prev;
     }
   };
-
+  /* save에 initialState저장, 이벤트 전달할 saveDispatch 생성*/
   const [save, saveDispatch] = useReducer(ContextReducer, initialState);
 
-  let value = {
-    state: { save },
-    actions: { saveDispatch },
-  };
-
-  let [story, setStory] = useState([]);
-  let [isRowSelected, setIsRowSelected] = useState([]);
-
-  let [rowData, setRowData] = useState([]);
   let [dataTran, setDataTran] = useState([]);
 
   useEffect(() => {
-    // let rows = [];
-    // rows.push({
-    //   rows: dummyData.map((column, idx) => ({
-    //     tableName: column.tableName,
-    //     filed: column.columnName,
-    //     algorithm: "미선택",
-    //     type: 0,
-    //     degree: 0,
-    //   })),
-    // });
-
-    console.log(newDummyData);
-    console.log(newDummyData[0].columns);
-    console.log(initialState, "CONFIRN");
     setDataTran(newDummyData);
   }, [save]);
-
-  let [memIdData, setMemIdData] = useState("미선택"); // InputNum 공간
-  let [emailData, setEmailData] = useState("미선택");
-  let [birthData, setBirthData] = useState("미선택");
-
-  let [memId, setMemId] = useState([]); // 정보들 담길 공간
-  let [emailId, setEmailId] = useState([]);
-  let [birthId, setBirthId] = useState([]);
 
   return (
     <StateContext.Provider
@@ -175,24 +140,6 @@ export const ContextProvider = ({ children }) => {
         actions: { saveDispatch },
         dataTran,
         setDataTran,
-        rowData,
-        setRowData,
-        birthData,
-        setBirthData,
-        birthId,
-        setBirthId,
-        emailData,
-        setEmailData,
-        memId,
-        setMemId,
-        emailId,
-        setEmailId,
-        story,
-        setStory,
-        isRowSelected,
-        setIsRowSelected,
-        memIdData,
-        setMemIdData,
       }}
     >
       {children}

@@ -1,47 +1,51 @@
-import React, {
-  useState,
-  useEffect,
-  useReducer,
-  memo,
-  useContext,
-  useRef,
-} from "react";
-import { Header, Preview, MemIdInPutNum } from "./";
-import { Table, Menu, Select, Dropdown, Button, InputNumber } from "antd";
-import { DownOutlined } from "@ant-design/icons";
-import { useStateContext, StateContext } from "../contexts/ContextProvider";
+/* React Library */
+import React, { useState, useEffect, useContext } from "react";
+/* Internal Files */
+import { Header, MemIdInPutNum, Example } from "./";
 import MemIdMenu from "./AlgorithmMenu/MemIdMenu";
 
-import { dummyData } from "../data/dummyData";
+/* Ant Design */
+import { Table, Select, Button, Popover } from "antd";
+import { QuestionCircleOutlined } from "@ant-design/icons";
+/* Context API */
+import { useStateContext, StateContext } from "../contexts/ContextProvider";
+/* Emotion */
+import styled from "@emotion/styled";
 
 const Anonymization = (props) => {
   const { Option, OptGroup } = Select;
 
-  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-
   let [res, setRes] = useState([]);
 
+  /* ContextProvider에서 생성한 context 가져오는 부분  */
+  const context = useContext(StateContext);
+
+  /* 알고리즘 적용 테이블 datasource */
+  const [dataSource, setDatasource] = useState([]);
+
+  /* context에서 dataTran, setDataTran 함수 가져오는 부분 */
+  let { dataTran, setDataTran } = useStateContext();
+  /* 알고리즘 적용 Export 버튼 클릭 시 true, false */
+  const [loading, setLoading] = useState(false);
+
+  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+
+  /* 알고리즘 적용 테이블에서 선택된 row 확인 */
   const rowSelection = {
     onChange: (newSelectedRowKeys) => {
       console.log("selectedRowKeys changed: ", newSelectedRowKeys);
       setRes(
-        newSelectedRowKeys.map(
-          (row, idx) =>
-            context.state.save.rows.find(({ field }) => field === row)
-
-          // console.log(row)
+        newSelectedRowKeys.map((row, idx) =>
+          context.state.save.rows.find(({ field }) => field === row)
         )
       );
-      // context.state.save.rows.find(({ field }) => field === "email")
-
       console.log(context.state.save.rows);
       setSelectedRowKeys(newSelectedRowKeys);
     },
     selectedRowKeys,
   };
 
-  const [loading, setLoading] = useState(false);
-
+  /* Export 버튼 클릭시, 선택했던 row들 초기화 */
   const start = () => {
     setLoading(true);
     // ajax request after empty completing
@@ -52,6 +56,7 @@ const Anonymization = (props) => {
     }, 1000);
   };
 
+  /* Table Columns */
   const columns = [
     Table.SELECTION_COLUMN,
     {
@@ -80,33 +85,22 @@ const Anonymization = (props) => {
     },
   ];
 
-  let [row, setRow] = useState();
-
-  let { dataTran, setDataTran } = useStateContext();
-
-  const context = useContext(StateContext);
-
-  const [dataSource, setDatasource] = useState([]);
-  let data = [];
-
+  /* useEffect */
   useEffect(() => {
+    /* Algorithm에 따라 달라지는 Degree 부분을 나타내는 함수 */
     const getDegree = ({ field, algorithm, dataTypes, type }) => {
-      // console.log(field, algorithm, type);
       let degree = [];
       const fieldObject = dataTran[0]?.algorithms?.find(
         ({ dataType }) => dataType === Number(dataTypes)
-      ); //
+      );
 
       const algorithms = fieldObject?.groups.map(
         ({ algorithms }) => algorithms
       );
 
-      // console.log(algorithms, "ALGORITHMS ");
       const algorithmObject = algorithms?.map(([{ types }]) =>
         types?.map((row) => {
-          //
           degree.push(row);
-          // console.log(row, "ROW");
         })
       );
 
@@ -115,25 +109,26 @@ const Anonymization = (props) => {
       return a;
     };
 
+    /* row별 dataType에 따른 algorithms에서 해당되는 dataType에서의 groups 가져오는 함수 */
+    const findAlgorithm = (columnDataType) => {
+      const algorithmObject = dataTran[0].algorithms.find(
+        ({ dataType }) => dataType === columnDataType
+      );
+      return algorithmObject.groups;
+    };
+
+    /* findAlgorithm을 거치고 groups에서 types를 선별하는 함수 */
     const partDegree = (val) => {
       const res = [];
       for (let i = 0; i < val.length; i++) {
         for (let j = 0; j < val[i].algorithms.length; j++) {
-          // console.log(val[i]?.algorithms[j]?.types);
           res.push(val[i]?.algorithms[j]?.types);
         }
       }
       return res;
     };
 
-    const findAlgorithm = (columnDataType) => {
-      const algorithmObject = dataTran[0].algorithms.find(
-        ({ dataType }) => dataType === columnDataType
-      );
-      // console.log(algorithmObject.groups);
-      return algorithmObject.groups;
-    };
-
+    /* context에서 받은 dataTran으로 table구성할 데이터 생성하는 함수 */
     const rowInfo = dataTran[0]?.columns?.map((column, idx) => ({
       key: column.columnName,
       table: column.tableName,
@@ -146,6 +141,9 @@ const Anonymization = (props) => {
       key: row.key,
       table: row.table,
       field: row.field,
+      /* algorithm col에  MemIdMenu컴포넌트 대입하여 idx, 해당하는 idx의 rowInfo(row값들),
+        이벤트 클릭 시, 호출되는 onChange함수를 넘김
+      */
       algorithm: (
         <MemIdMenu
           index={idx}
@@ -161,6 +159,9 @@ const Anonymization = (props) => {
           }}
         />
       ),
+      /* degree col에 MemIdInPutNum 컴포넌트 대입하여 위와 마찬가지로 idx, degreeOptions, onChange(이벤트)를
+      prop으로 넘겨줌, 선택한 row별 type값 저장을 위해 setType 함수도 넘겨줌
+       */
       degree: (
         <MemIdInPutNum
           index={idx}
@@ -187,17 +188,42 @@ const Anonymization = (props) => {
         />
       ),
     }));
-    // console.log(context?.state);
     console.log(rowInfo, "ROWINFO");
     setDatasource(tableData);
   }, [context.actions]);
 
-  const hasSelected = selectedRowKeys.length > 0;
+  /* Antd Icon에 Emotion styled 적용 */
+  const ExamIcon = styled(QuestionCircleOutlined)`
+    font-size: 22px;
+    color: gray;
+  `;
 
   return (
     <>
       <div className="m-2 md:m-10 h-[700px] mt-24 p-2 md:p-10 bg-white rounded-3xl ">
-        <Header title="알고리즘 적용" />
+        <div className=" w-full h-20 flex ">
+          <div className="my-auto text-3xl pl-4">
+            <Header title="알고리즘 적용" />
+          </div>
+          <div className="my-auto text-xl flex justify-start">
+            <div className="my-auto ml-3 mb-9">
+              <Popover content={<Example />} title="Example">
+                <ExamIcon />
+              </Popover>
+            </div>
+            <div className="absolute right-[160px]">
+              <Button
+                type="primary"
+                onClick={() => {
+                  start();
+                  console.log(res);
+                }}
+              >
+                Export
+              </Button>
+            </div>
+          </div>
+        </div>
         <Table
           columns={columns}
           rowSelection={rowSelection}
@@ -206,21 +232,6 @@ const Anonymization = (props) => {
           loading={loading}
           scroll={{ x: true, y: 500 }}
         />
-
-        <Button
-          onClick={() => {
-            // console.log(select);
-            start();
-            console.log(res);
-            // console.log(context.state.save.rows);
-            // context.actions.saveDispatch({
-            //   types: "SET_INITIAL_SOURCE",
-            // });
-          }}
-        >
-          {" "}
-          check
-        </Button>
       </div>
     </>
   );
