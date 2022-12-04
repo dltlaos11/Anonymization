@@ -3,6 +3,9 @@ import React, { useState, useEffect, useContext } from "react";
 /* Internal Files */
 import { Header, MemIdInPutNum, Example } from "./";
 import MemIdMenu from "./AlgorithmMenu/MemIdMenu";
+/* API */
+import algorithmService from "../api/algorithm.service";
+import axios from "axios";
 
 /* Ant Design */
 import { Table, Select, Button, Popover } from "antd";
@@ -111,7 +114,7 @@ const Anonymization = (props) => {
 
     /* row별 dataType에 따른 algorithms에서 해당되는 dataType에서의 groups 가져오는 함수 */
     const findAlgorithm = (columnDataType) => {
-      const algorithmObject = dataTran[0].algorithms.find(
+      const algorithmObject = dataTran[0]?.algorithms.find(
         ({ dataType }) => dataType === columnDataType
       );
       return algorithmObject.groups;
@@ -217,6 +220,35 @@ const Anonymization = (props) => {
                 onClick={() => {
                   start();
                   console.log(res);
+
+                  // const response = axios
+                  //   .get("/api/select", body, {
+                  //     headers: { "content-type": "multipart/form-data" },
+                  //   })
+                  //   .then((res) => console.log(res));
+                  // response()
+                  var data = new FormData();
+                  // data.append("selectForms", res);
+                  var body = {
+                    selectForms: res,
+                  };
+
+                  const api = axios.create({
+                    baseURL: "",
+                    data: body,
+                    headers: {
+                      "Content-Type": `multipart/form-data; boundary=${data._boundary}`,
+                    },
+                  });
+
+                  api
+                    .get("/api/select")
+                    .then((response) =>
+                      console.log(JSON.stringify(response.data))
+                    )
+                    .catch((error) => {
+                      console.log(error);
+                    });
                 }}
               >
                 Export

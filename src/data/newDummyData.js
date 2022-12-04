@@ -2,119 +2,244 @@ export const newDummyData = [
   {
     columns: [
       {
-        tableName: "tb_mber_detail",
-        columnName: "mem_sn",
+        tableName: "VIEW_TOTAL",
+        columnName: "user_sn",
         dataType: 0,
       },
       {
-        tableName: "tb_mber_detail",
-        columnName: "email_agree_ty1",
+        tableName: "VIEW_TOTAL",
+        columnName: "user_email",
         dataType: 4,
       },
       {
-        tableName: "tb_mber_detail",
-        columnName: "email_agree_ty2",
+        tableName: "VIEW_TOTAL",
+        columnName: "user_country_num",
         dataType: 4,
       },
       {
-        tableName: "tb_mber_detail",
-        columnName: "birth",
+        tableName: "VIEW_TOTAL",
+        columnName: "user_phone_num",
         dataType: 4,
       },
       {
-        tableName: "tb_mber_detail",
-        columnName: "height",
-        dataType: 4,
-      },
-      {
-        tableName: "tb_mber_detail",
-        columnName: "mber_height_ty",
-        dataType: 4,
-      },
-      {
-        tableName: "tb_mber_detail",
-        columnName: "weight",
-        dataType: 4,
-      },
-      {
-        tableName: "tb_mber_detail",
-        columnName: "mber_weight_ty",
-        dataType: 4,
-      },
-      {
-        tableName: "tb_mber_detail",
-        columnName: "mber_sn1", //
+        tableName: "VIEW_TOTAL",
+        columnName: "user_birth",
         dataType: 0,
       },
       {
-        tableName: "tb_mber_manage",
-        columnName: "mber_sn",
+        tableName: "VIEW_TOTAL",
+        columnName: "user_gender",
+        dataType: 4,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "user_height",
+        dataType: 1,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "user_weight",
+        dataType: 1,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "user_lastday",
+        dataType: 2,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "user_name",
+        dataType: 4,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "user_signup_date",
+        dataType: 2,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "inspirator_pk",
         dataType: 0,
       },
       {
-        tableName: "tb_mber_manage",
-        columnName: "agree_ty1",
-        dataType: 4,
-      },
-      {
-        tableName: "tb_mber_manage",
-        columnName: "agree_ty2",
-        dataType: 4,
-      },
-      {
-        tableName: "tb_mber_manage",
-        columnName: "agree_ty3",
-        dataType: 4,
-      },
-      {
-        tableName: "tb_mber_manage",
-        columnName: "join_dt",
+        tableName: "VIEW_TOTAL",
+        columnName: "inspirator_datetime",
         dataType: 3,
       },
       {
-        tableName: "tb_mber_manage",
-        columnName: "mber_email",
-        dataType: 4,
-      },
-      {
-        tableName: "tb_mber_manage",
-        columnName: "mber_nm",
-        dataType: 4,
-      },
-      {
-        tableName: "tb_mber_manage",
-        columnName: "mber_password",
-        dataType: 4,
-      },
-      {
-        tableName: "tb_mber_manage",
-        columnName: "mber_sttus",
-        dataType: 4,
-      },
-      {
-        tableName: "tb_sperm_data",
-        columnName: "sperm_data_sn",
+        tableName: "VIEW_TOTAL",
+        columnName: "stethoscope_pk",
         dataType: 0,
       },
       {
-        tableName: "tb_sperm_data",
-        columnName: "sperm_activity",
-        dataType: 4,
-      },
-      {
-        tableName: "tb_sperm_data",
-        columnName: "sperm_con",
-        dataType: 0,
-      },
-      {
-        tableName: "tb_sperm_data",
-        columnName: "sperm_data_dt",
+        tableName: "VIEW_TOTAL",
+        columnName: "stethoscope_datetime",
         dataType: 3,
       },
       {
-        tableName: "tb_sperm_data",
-        columnName: "mber_sn3", //
+        tableName: "VIEW_TOTAL",
+        columnName: "body_part_sn",
         dataType: 0,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "body_part_name",
+        dataType: 4,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "led_pk",
+        dataType: 0,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "led_datetime",
+        dataType: 3,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "led_use_time",
+        dataType: 4,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "otoscope_pk",
+        dataType: 0,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "otoscope_datetime",
+        dataType: 3,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "otoscope_division",
+        dataType: 4,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "file_extension_sn",
+        dataType: 0,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "file_extension_name",
+        dataType: 4,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "asthma_onset_sn",
+        dataType: 0,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "asthma_onset_date",
+        dataType: 2,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "severity_sn",
+        dataType: 0,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "severity_level",
+        dataType: 4,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "asthma_medicine_sn",
+        dataType: 0,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "asthma_medicine_date",
+        dataType: 2,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "medicine_info_sn",
+        dataType: 0,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "medicine_info_item_name",
+        dataType: 4,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "medicine_info_item_seq",
+        dataType: 0,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "asthma_tkng_datetime",
+        dataType: 3,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "asthma_tkng_no",
+        dataType: 0,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "asthma_tkng_cycle",
+        dataType: 4,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "washer_pk",
+        dataType: 0,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "washer_datetime",
+        dataType: 3,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "nebulizer_pk",
+        dataType: 0,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "nebulizer_use_time",
+        dataType: 4,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "nebulizer_medicine",
+        dataType: 4,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "nebulizer_dosage",
+        dataType: 1,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "nebulizer_unit",
+        dataType: 4,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "nebulizer_datetime",
+        dataType: 3,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "thermometer_pk",
+        dataType: 0,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "thermometer_datetime",
+        dataType: 3,
+      },
+      {
+        tableName: "VIEW_TOTAL",
+        columnName: "thermometer_temperature",
+        dataType: 1,
       },
     ],
     algorithms: [
@@ -141,11 +266,23 @@ export const newDummyData = [
             algorithms: [
               {
                 algorithmName: "해시 알고리즘",
-                types: null,
+                types: [
+                  {
+                    type: "해시 알고리즘",
+                    typeValue: 0,
+                    degrees: null,
+                  },
+                ],
               },
               {
                 algorithmName: "AES",
-                types: null,
+                types: [
+                  {
+                    type: "AES",
+                    typeValue: 0,
+                    degrees: null,
+                  },
+                ],
               },
             ],
           },
@@ -154,11 +291,48 @@ export const newDummyData = [
             algorithms: [
               {
                 algorithmName: "총계 처리",
-                types: null,
+                types: [
+                  {
+                    type: "평균값",
+                    typeValue: 1,
+                    degrees: null,
+                  },
+                  {
+                    type: "중앙값",
+                    typeValue: 2,
+                    degrees: null,
+                  },
+                  {
+                    type: "최빈값",
+                    typeValue: 3,
+                    degrees: null,
+                  },
+                  {
+                    type: "최대값",
+                    typeValue: 4,
+                    degrees: null,
+                  },
+                  {
+                    type: "최소값",
+                    typeValue: 5,
+                    degrees: null,
+                  },
+                  {
+                    type: "최소값",
+                    typeValue: 5,
+                    degrees: null,
+                  },
+                ],
               },
               {
                 algorithmName: "상하단 코딩",
-                types: null,
+                types: [
+                  {
+                    type: "상하단 코딩",
+                    typeValue: 0,
+                    degrees: null,
+                  },
+                ],
               },
             ],
           },
@@ -187,11 +361,23 @@ export const newDummyData = [
             algorithms: [
               {
                 algorithmName: "해시 알고리즘",
-                types: null,
+                types: [
+                  {
+                    type: "해시 알고리즘",
+                    typeValue: 0,
+                    degrees: null,
+                  },
+                ],
               },
               {
                 algorithmName: "AES",
-                types: null,
+                types: [
+                  {
+                    type: "AES",
+                    typeValue: 0,
+                    degrees: null,
+                  },
+                ],
               },
             ],
           },
@@ -200,11 +386,48 @@ export const newDummyData = [
             algorithms: [
               {
                 algorithmName: "총계 처리",
-                types: null,
+                types: [
+                  {
+                    type: "평균값",
+                    typeValue: 1,
+                    degrees: null,
+                  },
+                  {
+                    type: "중앙값",
+                    typeValue: 2,
+                    degrees: null,
+                  },
+                  {
+                    type: "최빈값",
+                    typeValue: 3,
+                    degrees: null,
+                  },
+                  {
+                    type: "최대값",
+                    typeValue: 4,
+                    degrees: null,
+                  },
+                  {
+                    type: "최소값",
+                    typeValue: 5,
+                    degrees: null,
+                  },
+                  {
+                    type: "최소값",
+                    typeValue: 5,
+                    degrees: null,
+                  },
+                ],
               },
               {
                 algorithmName: "상하단 코딩",
-                types: null,
+                types: [
+                  {
+                    type: "상하단 코딩",
+                    typeValue: 0,
+                    degrees: null,
+                  },
+                ],
               },
             ],
           },
@@ -220,7 +443,7 @@ export const newDummyData = [
                 algorithmName: "마스킹",
                 types: [
                   {
-                    type: "가명화",
+                    type: "마스킹",
                     typeValue: 0,
                     degrees: ["level 1", "level 2", "level 3"],
                   },
@@ -233,11 +456,23 @@ export const newDummyData = [
             algorithms: [
               {
                 algorithmName: "해시 알고리즘",
-                types: null,
+                types: [
+                  {
+                    type: "해시 알고리즘",
+                    typeValue: 0,
+                    degrees: null,
+                  },
+                ],
               },
               {
                 algorithmName: "AES",
-                types: null,
+                types: [
+                  {
+                    type: "AES",
+                    typeValue: 0,
+                    degrees: null,
+                  },
+                ],
               },
             ],
           },
@@ -291,11 +526,23 @@ export const newDummyData = [
             algorithms: [
               {
                 algorithmName: "해시 알고리즘",
-                types: null,
+                types: [
+                  {
+                    type: "해시 알고리즘",
+                    typeValue: 0,
+                    degrees: null,
+                  },
+                ],
               },
               {
                 algorithmName: "AES",
-                types: null,
+                types: [
+                  {
+                    type: "AES",
+                    typeValue: 0,
+                    degrees: null,
+                  },
+                ],
               },
             ],
           },
@@ -364,11 +611,23 @@ export const newDummyData = [
             algorithms: [
               {
                 algorithmName: "해시 알고리즘",
-                types: null,
+                types: [
+                  {
+                    type: "해시 알고리즘",
+                    typeValue: 0,
+                    degrees: null,
+                  },
+                ],
               },
               {
                 algorithmName: "AES",
-                types: null,
+                types: [
+                  {
+                    type: "AES",
+                    typeValue: 0,
+                    degrees: null,
+                  },
+                ],
               },
             ],
           },
