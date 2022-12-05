@@ -1,5 +1,5 @@
 const { createProxyMiddleware } = require("http-proxy-middleware");
-/* 프록시 설정 */
+/* 프록시 설정  */
 
 module.exports = function (app) {
   app.use(
