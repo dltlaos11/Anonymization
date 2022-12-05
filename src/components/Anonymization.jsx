@@ -6,6 +6,7 @@ import MemIdMenu from "./AlgorithmMenu/MemIdMenu";
 /* API */
 import algorithmService from "../api/algorithm.service";
 import axios from "axios";
+import api from "../api/axios";
 
 /* Ant Design */
 import { Table, Select, Button, Popover } from "antd";
@@ -217,39 +218,55 @@ const Anonymization = (props) => {
             <div className="absolute right-[160px]">
               <Button
                 type="primary"
-                onClick={() => {
+                onClick={async () => {
                   start();
-                  console.log(res);
+                  console.log(res); 
 
-                  // const response = axios
-                  //   .get("/api/select", body, {
-                  //     headers: { "content-type": "multipart/form-data" },
-                  //   })
-                  //   .then((res) => console.log(res));
-                  // response()
-                  var data = new FormData();
-                  // data.append("selectForms", res);
+                  // /api/select
+
                   var body = {
                     selectForms: res,
                   };
+                  console.log(body);
 
-                  const api = axios.create({
-                    baseURL: "",
-                    data: body,
-                    headers: {
-                      "Content-Type": `multipart/form-data; boundary=${data._boundary}`,
-                    },
-                  });
+                  /*
+                                    const usersName = JSON.stringify({ selectForms: res });
+                  const customConfig = {
+                      headers: {
+                      'Content-Type': 'application/json'
+                      }
+                  };
+                  const result = await axios.post('/api/select', body, customConfig);
+                  
+                  console.log(result.data); // '{"name":"John Doe"}'
+                  console.log(result.data.headers['Content-Type']); // 'application/json',
+                  */
 
-                  api
-                    .get("/api/select")
-                    .then((response) =>
-                      console.log(JSON.stringify(response.data))
-                    )
-                    .catch((error) => {
-                      console.log(error);
-                    });
+                  /* 
+                    var url = new URL("http://localhost:3000/api/select");
+                    for (let k in body) { url.searchParams.append(k, body[k]); }
+                    fetch(url).then((res)=> console.log(res));
+                  */
+
+                    const signupAPI = () => {
+                      let data = JSON.stringify( { selectForms: res } );
+                      let config = {
+                          method: 'get',
+                          url: "/api/select" ,
+                          headers: { 'Content-Type': 'text/plain' },
+                          data: data
+                      };
+                      axios( config ).then( res => {
+                        console.log(res.data)
+                      } ).catch( err => {
+                          console.log(err);
+                      })
+                    };
+                    signupAPI();
+
+
                 }}
+                
               >
                 Export
               </Button>
