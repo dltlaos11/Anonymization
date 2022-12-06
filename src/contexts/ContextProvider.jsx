@@ -5,6 +5,7 @@ import React, {
   useState,
   useReducer,
   useEffect,
+  useCallback,
 } from "react";
 
 /* API */
@@ -17,8 +18,8 @@ import { newDummyData } from "../data/newDummyData";
 export const StateContext = createContext();
 
 export const ContextProvider = ({ children }) => {
-  let [RealData, setRealData] = useState([]);
   let [dataTran, setDataTran] = useState([]);
+  let [sendData, setSendData] = useState([[]]);
 
   let initialState = {
     // context에 저장되는 값
@@ -161,6 +162,8 @@ export const ContextProvider = ({ children }) => {
         actions: { saveDispatch },
         dataTran,
         setDataTran,
+        sendData,
+        setSendData,
       }}
     >
       {children}

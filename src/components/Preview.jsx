@@ -6,18 +6,22 @@ import { Table, ExportTableButton } from "ant-table-extensions";
 import { dummy } from "../data/SendData";
 import Header from "./Header";
 
+import { useStateContext } from "../contexts/ContextProvider";
+
 const Preview = () => {
+  let { sendData, setSendData } = useStateContext();
+
   let data = [];
   /* Table dataSource */
   let dataItem = [];
 
   console.log(dummy);
   //칼럼 설정
-  let Column = dummy[0].map((row) => row.columnName);
+  let Column = sendData[0]?.map((row) => row.columnName);
   console.log(Column, "Column");
 
   /* Columns */
-  const columns = Column.map((column, index) => {
+  const columns = Column?.map((column, index) => {
     return {
       key: index,
       title: column,
@@ -27,7 +31,7 @@ const Preview = () => {
   });
 
   /* Data */
-  dummy.map((item) => {
+  sendData?.map((item) => {
     data.push(item.map((row) => row.data));
   });
   console.log(data, "data");
@@ -45,13 +49,11 @@ const Preview = () => {
 
   /* 테이블 key 넣기 */
   let a = 0;
-  const Data = dataItem.map((dummy) => {
+  const Data = dataItem.map((sendData) => {
     a += 1;
-    dummy.key = a;
-    return dummy;
+    sendData.key = a;
+    return sendData;
   });
-
-  useEffect(() => {}, [Data.length]);
 
   const onChange = (pagination, filters, sorter, extra) => {
     console.log("params", pagination, filters, sorter, extra);

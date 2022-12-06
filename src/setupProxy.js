@@ -4,7 +4,7 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 module.exports = function (app) {
   app.use(
     createProxyMiddleware("/api", {
-      target: "http://intindev.com:8888",
+      target: "http://3.36.51.171:8888",
       changeOrigin: true,
       pathRewrite: {
         "^/api": "",

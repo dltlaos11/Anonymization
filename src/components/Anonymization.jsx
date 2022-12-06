@@ -19,6 +19,7 @@ import styled from "@emotion/styled";
 const Anonymization = (props) => {
   const { Option, OptGroup } = Select;
 
+  /* select한 결과 값은 res에 담김 */
   let [res, setRes] = useState([]);
 
   /* ContextProvider에서 생성한 context 가져오는 부분  */
@@ -29,6 +30,7 @@ const Anonymization = (props) => {
 
   /* context에서 dataTran, setDataTran 함수 가져오는 부분 */
   let { dataTran, setDataTran } = useStateContext();
+  let { sendData, setSendData } = useStateContext();
   /* 알고리즘 적용 Export 버튼 클릭 시 true, false */
   const [loading, setLoading] = useState(false);
 
@@ -220,53 +222,30 @@ const Anonymization = (props) => {
                 type="primary"
                 onClick={async () => {
                   start();
-                  console.log(res); 
+                  console.log(res);
 
-                  // /api/select
+                  const frm = new FormData();
 
-                  var body = {
-                    selectForms: res,
-                  };
-                  console.log(body);
+                  for (let i = 0; i < res.length; i++) {
+                    frm.append(`selectForms[${i}].algorithm`, res[i].algorithm);
+                    frm.append(`selectForms[${i}].field`, res[i].field);
+                    frm.append(`selectForms[${i}].tableName`, res[i].tableName);
+                    frm.append(`selectForms[${i}].degree`, res[i].degree);
+                    frm.append(`selectForms[${i}].dataTypes`, res[i].dataTypes);
+                    frm.append(`selectForms[${i}].type`, res[i].type);
+                  }
 
-                  /*
-                                    const usersName = JSON.stringify({ selectForms: res });
-                  const customConfig = {
-                      headers: {
-                      'Content-Type': 'application/json'
-                      }
-                  };
-                  const result = await axios.post('/api/select', body, customConfig);
-                  
-                  console.log(result.data); // '{"name":"John Doe"}'
-                  console.log(result.data.headers['Content-Type']); // 'application/json',
-                  */
-
-                  /* 
-                    var url = new URL("http://localhost:3000/api/select");
-                    for (let k in body) { url.searchParams.append(k, body[k]); }
-                    fetch(url).then((res)=> console.log(res));
-                  */
-
-                    const signupAPI = () => {
-                      let data = JSON.stringify( { selectForms: res } );
-                      let config = {
-                          method: 'get',
-                          url: "/api/select" ,
-                          headers: { 'Content-Type': 'text/plain' },
-                          data: data
-                      };
-                      axios( config ).then( res => {
-                        console.log(res.data)
-                      } ).catch( err => {
-                          console.log(err);
-                      })
-                    };
-                    signupAPI();
-
-
+                  await axios
+                    .post("/api/select", frm)
+                    .then((response) => {
+                      console.log(response.data);
+                      setSendData(response.data);
+                    })
+                    .catch((error) => {
+                      // 예외 처리
+                      console.log(error);
+                    });
                 }}
-                
               >
                 Export
               </Button>
